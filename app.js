@@ -21,9 +21,10 @@ app.configure(function(){
   app.use(express.static(__dirname + '/public'));
 });
 
-app.configure('development', function(){
-  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
-});
+/** Uncomment the next three lines to enable development mode (show errors) */
+// app.configure('development', function(){
+//   app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+// });
 
 app.configure('production', function(){
   app.use(express.errorHandler());
@@ -44,4 +45,4 @@ app.get('/shorten', routes.urlshortpc().shorten);
 app.get(/^\/[a-zA-Z0-9]+$/, routes.urlshortpc().forward);
 
 app.listen(config.localPort, config.localIP);
-console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+console.log("URL Shortener service running on " + config.localIP + ":" + config.localPort);
