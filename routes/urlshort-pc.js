@@ -12,9 +12,7 @@ module.exports = function() {
 	return {
 		
 		index: function(req, res) {
-			res.render('index', { title: config.siteName });
-			// var index = config.getURL('0');
-			// console.log(config.sites[index]);
+			res.render('index', {title: config.siteName});
 		},
 		
 		shorten: function(req, res) {
@@ -54,7 +52,7 @@ module.exports = function() {
 			res.end();
 			
 			// Report the URL in console and save the database in the background.
-			console.log('Your new short URL: http://' + config.siteDomain + '/' + short);
+			console.log('Your new short URL: http://' + config.siteDomain + '/' + short + ' for ' + url);
 			config.bgSaveSiteData();
 			
 		},

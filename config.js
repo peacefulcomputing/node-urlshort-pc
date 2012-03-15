@@ -8,11 +8,13 @@ config = {
 	
 	siteName: "PeacefulComputing's URL Shortener",
 	siteDomain: "localhost:3000",
+	localPort: 3001,
+	localIP: '127.0.0.1',
 	file: "./urlshort-pc.json",
 	chars: "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
 	bgSaveSiteDataRate: 1800000, //milliseconds to save this.sites data. 1800000 = 30 minutes.
 
-	/* `sites` contains the data for shortened URLs. Provided are a couple URLs. */
+	/* `sites` contains the data for shortened URLs. Provided are a couple example entries. */
 	/* This `sites` variable will be overwritten/updated by data inside the file `config.file` */
 	sites: [
 		{"url":"http://google.com","views":2},
@@ -70,7 +72,6 @@ config = {
 	},
 
 	str_split: function (string, split_length) {
-		
 		// http://kevin.vanzonneveld.net
 		// +     original by: Martijn Wieringa
 		// +     improved by: Brett Zamir (http://brett-zamir.me)

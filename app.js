@@ -43,5 +43,5 @@ app.get('/shorten', routes.urlshortpc().shorten);
 // The regex for forwarding URLs
 app.get(/^\/[a-zA-Z0-9]+$/, routes.urlshortpc().forward);
 
-app.listen(3000);
+app.listen(config.localPort, config.localIP);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
