@@ -103,6 +103,7 @@ module.exports = function() {
 			// Load the sites from the `config.file` since the file is present.
 			try {
 				config.sites = JSON.parse(fs.readFileSync(config.file));
+				console.log('Loaded ' + config.sites.length + ' URLs to forward');
 			} catch(err) {
 				config.sites = [];
 			}

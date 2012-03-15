@@ -7,8 +7,8 @@ var fs = require('fs');
 config = {
 	
 	siteName: "PeacefulComputing's URL Shortener",
-	siteDomain: "localhost:3000",
-	localPort: 3001,
+	siteDomain: "localhost:9001",
+	localPort: 9001,
 	localIP: '127.0.0.1',
 	file: "./urlshort-pc.json",
 	chars: "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
@@ -17,10 +17,8 @@ config = {
 	/* `sites` contains the data for shortened URLs. Provided are a couple example entries. */
 	/* This `sites` variable will be overwritten/updated by data inside the file `config.file` */
 	sites: [
-		{"url":"http://google.com","views":2},
-		{"url":"http://apple.com/","views":9001},
-		{"url":"http://www.peacefulcomputing.com","views":9000},
-		{"url":"http://welp.com/","views":123}
+		{"url":"http://google.com","views":0},
+		{"url":"http://www.peacefulcomputing.com","views":1337}
 	],
 	
 	fmod: function(a, b) {
@@ -31,12 +29,12 @@ config = {
 		var size = short.length - 1;
 		var length = this.chars.length;
 		var string = this.str_split(short,1);
-		var retval = [this.strpos(this.chars, string.pop(), 0)];
+		var retval = this.strpos(this.chars, string.pop(), 0);
 		
 		var i, chr;
 		for (i in string) {
-			chr = this.chars[i];
-			retval.push(this.chars.indexOf(chr, 0) * Math.pow(length, size - i));
+			chr = string[i];
+			retval += (this.strpos(this.chars, chr, 0) * Math.pow(length, size - i));
 		}
 		return retval;
 	},
