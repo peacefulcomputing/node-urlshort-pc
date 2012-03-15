@@ -1,0 +1,63 @@
+body {
+  padding: 50px;
+	padding-top: 0;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+input {
+	font-size: 16px;
+	border: 1px solid silver;
+	background-color: white;
+	padding: 4px;
+}
+
+input#submit {
+	background-color: #4D90FE;
+	border: 1px solid #3079ED;
+	color: white;
+}
+
+input#url {
+	width: 450px;
+	margin-right: 30px;
+}
+
+p.form {
+	padding: 15px;
+	background-color: #f5f5f5;
+	border: 1px solid #ebebeb;
+	border-radius: 1px;
+	width: 600px;
+	font-size: 16px;
+}
+
+p.form span {
+	display: block;
+	margin-bottom: 15px;
+}
+
+p#new {
+	display: none;
+	font-size: 18px;
+}
+
+div#message-container {
+	margin-top: 30px;
+	height: 20px;
+}
+
+div#message {
+	font-size: 16px;
+}
+
+div#message.success {
+	color: green;
+}
+
+div#message.error {
+	color: red;
+}

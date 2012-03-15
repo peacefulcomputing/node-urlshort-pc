@@ -1,0 +1,42 @@
+div#message-container
+	div#message
+h1= title
+p Welcome to #{title}
+p A fast URL shortener powered by 
+	a(href="http://nodejs.org/",target="_blank") nodejs.org
+	|  and created by 
+	a(href="http://www.peacefulcomputing.com/",target="_blank") PeacefulComputing
+	
+form#form
+	
+	p.form
+		span Paste your long URL here:
+		input(name="url",id="url")
+		input(type="submit",value="Shorten URL",id="submit")
+		
+	p#new
+		span Shortened URL: 
+		span#newURL
+		
+script(src="/javascripts/jquery-1.7.1.min.js",type="text/javascript")
+script(type="text/javascript")
+	jQuery(document).ready(function() {
+		jQuery('#url').focus();
+		jQuery('#form').submit(function(e){
+			e.preventDefault();
+			
+			jQuery.ajax({
+				type: 'GET',
+				url: '/shorten?' + jQuery('#url').serialize() + "&" + Math.random(),
+				success: function(data, textStatus){
+					jQuery('#new').hide();
+					jQuery('#newURL').html('<a href="' + data + '" target="_blank">' + data + '</a>');
+					jQuery('#new').fadeIn('fast');
+					jQuery('#message').hide().addClass('success').removeClass('error').html('URL Shortened').fadeIn();
+				},
+				error: function(xhr, textStatus, errorThrown){
+					jQuery('#message').hide().addClass('error').removeClass('success').html(xhr.responseText).fadeIn();
+				}
+			});
+		});
+	});
